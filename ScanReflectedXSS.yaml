@@ -4,7 +4,7 @@ info:
   name: Scanner Cross-Site Scripting Reflected
   author: Hernan Rodriguez
   severity: medium
-  description: XSS in moodle via GET parameter
+  description: XSS via GET parameter
   reference: https://www.linkedin.com/in/hernanrodriguez-/
     - 
   tags: xss
