@@ -1,4 +1,4 @@
-# ScanReflectedXSS
+# ScanReflectedXSS - Nuclei
 
 This script allows to find XSS vulnerabilities with nuclei, taking advantage of this resource in its maximum analysis capacity.
 
